@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;background:#222;display:flex;gap:24px;align-items:flex-start;padding:16px}
+  .row{display:flex;flex-direction:column;gap:8px;align-items:center}
+  img{background:#fff;image-rendering:pixelated}
+  svg{display:block}
+</style>
+<div class="row" id="a"></div>
+<div class="row" id="b"></div>
+<div class="row" id="c"></div>
+<script>
+const A = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#74212c"/>
+  <circle cx="16" cy="16" r="12.2" fill="none" stroke="#b8915b" stroke-width="1.35"/>
+  <text x="16" y="17.35" text-anchor="middle" dominant-baseline="central"
+    font-family="Liberation Serif, Georgia, Times New Roman, Times, serif"
+    font-size="10.5" font-weight="700" fill="#f5efe5">О&К</text>
+</svg>`;
+const B = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#f5efe5"/>
+  <rect x="1.2" y="1.2" width="29.6" height="29.6" rx="5" fill="none" stroke="#b8915b" stroke-width="1.6"/>
+  <text x="16" y="18.2" text-anchor="middle" dominant-baseline="central"
+    font-family="Liberation Serif, Georgia, Times New Roman, Times, serif"
+    font-size="13" fill="#74212c">ОК</text>
+  <text x="16" y="8.4" text-anchor="middle"
+    font-family="Liberation Serif, Georgia, Times, serif"
+    font-size="6.2" fill="#b8915b">&</text>
+</svg>`;
+const C = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#74212c"/>
+  <text x="16" y="21.6" text-anchor="middle"
+    font-family="Liberation Serif, Georgia, Times New Roman, Times, serif"
+    font-size="16" font-weight="700" fill="#f5efe5">ОК</text>
+  <rect x="7" y="6.2" width="18" height="1.15" fill="#b8915b"/>
+</svg>`;
+for (const [id, svg] of [["a", A], ["b", B], ["c", C]]) {
+  const row = document.getElementById(id);
+  for (const size of [16, 32, 64]) {
+    const wrap = document.createElement("div");
+    wrap.innerHTML = svg;
+    const el = wrap.firstElementChild;
+    el.setAttribute("width", size);
+    el.setAttribute("height", size);
+    row.appendChild(el);
+  }
+}
+</script>
